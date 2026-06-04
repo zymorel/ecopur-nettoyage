@@ -51,6 +51,23 @@ git push -u origin main
 - **Formulaire** : les demandes sont envoyées directement à `contact@ecopurnettoyage.com` par le script `envoi.php` (fonction `mail()` de Hostinger). Aucun service tiers requis. Voir la section ci-dessous.
 - **Coordonnées** : téléphones, adresse et e-mail sont déjà renseignés ; ajustez si besoin.
 
+## URL propres (sans .html)
+
+Le fichier `.htaccess` (Apache / Hostinger) donne des adresses réalistes :
+
+- `ecopurnettoyage.com/` (accueil)
+- `ecopurnettoyage.com/services`
+- `ecopurnettoyage.com/a-propos`
+- `ecopurnettoyage.com/contact`
+
+Toute ancienne adresse en `.html` (ex. `/services.html`) est **redirigée** (301) vers
+la version propre, et `/index.html` renvoie vers `/`. Les liens internes du site sont
+déjà écrits sans extension.
+
+> Ces règles ne s'appliquent **qu'en ligne sur Hostinger** (serveur Apache). En aperçu
+> local via `python -m http.server`, les URL propres ne fonctionnent pas : ouvrez alors
+> directement `index.html`, `services.html`, etc.
+
 ## Formulaire de contact (envoi.php)
 
 Le formulaire de la page Contact poste vers `envoi.php`, qui envoie un e-mail à

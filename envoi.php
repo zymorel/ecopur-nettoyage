@@ -25,7 +25,7 @@ function repondre($ok, $message, $estAjax) {
         echo json_encode(['ok' => $ok, 'message' => $message]);
     } else {
         $statut = $ok ? 'ok' : 'erreur';
-        header('Location: contact.html?envoi=' . $statut . '#devis');
+        header('Location: /contact?envoi=' . $statut . '#devis');
     }
     exit;
 }
