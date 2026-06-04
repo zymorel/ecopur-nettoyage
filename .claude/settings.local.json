@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(cp /c/Users/morel/.claude/projects/C--Users-morel-Dev-web-ecopur-nettoyage/5f1e4ca3-9c6b-470d-831b-e5e00ad1d069/tool-results/extracted/ecopur-nettoyage/project/index.html /c/Users/morel/.claude/projects/C--Users-morel-Dev-web-ecopur-nettoyage/5f1e4ca3-9c6b-470d-831b-e5e00ad1d069/tool-results/extracted/ecopur-nettoyage/project/services.html /c/Users/morel/.claude/projects/C--Users-morel-Dev-web-ecopur-nettoyage/5f1e4ca3-9c6b-470d-831b-e5e00ad1d069/tool-results/extracted/ecopur-nettoyage/project/a-propos.html /c/Users/morel/.claude/projects/C--Users-morel-Dev-web-ecopur-nettoyage/5f1e4ca3-9c6b-470d-831b-e5e00ad1d069/tool-results/extracted/ecopur-nettoyage/project/contact.html /c/Users/morel/Dev/web/ecopur-nettoyage/)",
+      "Bash(cp /c/Users/morel/.claude/projects/C--Users-morel-Dev-web-ecopur-nettoyage/5f1e4ca3-9c6b-470d-831b-e5e00ad1d069/tool-results/extracted/ecopur-nettoyage/project/assets/style.css /c/Users/morel/.claude/projects/C--Users-morel-Dev-web-ecopur-nettoyage/5f1e4ca3-9c6b-470d-831b-e5e00ad1d069/tool-results/extracted/ecopur-nettoyage/project/assets/logo.png /c/Users/morel/Dev/web/ecopur-nettoyage/assets/)"
+    ]
+  }
+}

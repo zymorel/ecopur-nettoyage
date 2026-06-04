@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page introuvable · ECOPUR Nettoyage</title>
+<meta name="description" content="La page demandée n'existe pas ou a été déplacée. Revenez à l'accueil d'ECOPUR Nettoyage.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="ECOPUR Nettoyage, accueil">
+      <img class="logo-mark" src="assets/logo.png" alt="Logo ECOPUR Nettoyage" width="46" height="46">
+      <span class="brand-text">
+        <span class="brand-name">ECO<span class="pur">PUR</span></span>
+        <span class="brand-sub">Nettoyage</span>
+      </span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="index.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <span class="header-phone">06 66 30 24 43</span>
+      <a href="contact.html" class="btn btn-primary">Demander un devis</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-head">
+  <span class="ph-deco" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Accueil</a><span class="sep">·</span>Erreur 404</div>
+    <h1>Cette page reste introuvable.</h1>
+    <p class="lede">Le lien que vous avez suivi est peut-être ancien, ou l'adresse comporte une erreur. Reprenons depuis le début.</p>
+  </div>
+</section>
+
+<section class="band band-soft">
+  <div class="wrap cta-band">
+    <span class="eyebrow">On vous remet sur la bonne voie</span>
+    <h2>Que cherchez-vous ?</h2>
+    <p class="lede">Retournez à l'accueil, parcourez nos prestations ou contactez-nous directement.</p>
+    <div class="cta-actions">
+      <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+      <a href="services.html" class="btn btn-ghost">Voir nos services</a>
+      <a href="contact.html" class="btn btn-ghost">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-about">
+        <span class="brand-text" style="display:flex;flex-direction:column;">
+          <span class="brand-name" style="font-size:22px;font-weight:800;">ECO<span style="color:var(--lime);">PUR</span></span>
+          <span class="brand-sub" style="font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;margin-top:5px;font-weight:700;">Nettoyage</span>
+        </span>
+        <p>Entreprise de propreté multiservices, basée à Ivry-sur-Seine et active dans toute la région parisienne.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Prestations</h4>
+        <ul>
+          <li><a href="services.html">Bureaux &amp; locaux</a></li>
+          <li><a href="services.html">Copropriétés</a></li>
+          <li><a href="services.html">Nettoyage industriel</a></li>
+          <li><a href="services.html">Vitres &amp; façades</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>130 av. Danielle Casanova<br>94200 Ivry-sur-Seine</li>
+          <li><a href="tel:+33666302443">06 66 30 24 43</a></li>
+          <li><a href="mailto:contact@ecopurnettoyage.com">contact@ecopurnettoyage.com</a></li>
+          <li><a href="https://ecopurnettoyage.com">ecopurnettoyage.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ECOPUR Nettoyage. Tous droits réservés.</span>
+      <span>Entreprise de propreté multiservices · Ivry-sur-Seine (94)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var t = document.getElementById('navToggle');
+    var n = document.getElementById('nav');
+    if (t && n) {
+      t.addEventListener('click', function () {
+        var open = n.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
+</body>
+</html>
