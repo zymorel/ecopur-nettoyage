@@ -242,6 +242,18 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
 }
 
+/* Images intégrées dans les hexagones, avatars et la carte */
+.hex img, .avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.map-ph iframe {
+  width: 100%; height: 100%;
+  border: 0;
+  display: block;
+}
+
 /* ---------- Sections ---------- */
 section { position: relative; }
 .band { padding: 92px 0; }

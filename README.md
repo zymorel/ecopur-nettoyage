@@ -46,8 +46,8 @@ git push -u origin main
 
 ## À personnaliser avant la mise en ligne
 
-- **Photos** : les visuels sont des emplacements rayés (« photo · … »). Remplacez-les par vos vraies photos d'interventions et les portraits des fondateurs.
-- **Carte** : dans `contact.html`, l'emplacement carte peut recevoir une iframe Google Maps.
+- **Photos** : des photos de démonstration (libres, dans `assets/img/`) sont en place pour l'accueil, la page À propos et les portraits des fondateurs. Remplacez-les par vos vraies photos en gardant les mêmes noms de fichiers, ou ajustez les chemins dans le HTML.
+- **Carte** : une carte Google Maps centrée sur le 130 av. Danielle Casanova est intégrée dans `contact.html`.
 - **Formulaire** : les demandes sont envoyées directement à `contact@ecopurnettoyage.com` par le script `envoi.php` (fonction `mail()` de Hostinger). Aucun service tiers requis. Voir la section ci-dessous.
 - **Coordonnées** : téléphones, adresse et e-mail sont déjà renseignés ; ajustez si besoin.
 
