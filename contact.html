@@ -91,7 +91,12 @@
       <h2 style="font-size:26px;margin-bottom:6px;">Demander un devis</h2>
       <p style="color:var(--muted);margin-bottom:26px;">Quelques informations pour cadrer votre besoin. Vous recevez une réponse sous deux jours ouvrés.</p>
 
-      <form id="contactForm" novalidate>
+      <form id="contactForm" action="envoi.php" method="post" novalidate>
+        <!-- Piège anti-spam : laissé vide, masqué aux humains -->
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label for="site_web">Ne pas remplir</label>
+          <input type="text" id="site_web" name="site_web" tabindex="-1" autocomplete="off">
+        </div>
         <div class="field-row">
           <div class="field">
             <label for="nom">Nom et prénom</label>
@@ -142,13 +147,14 @@
           <textarea id="message" name="message" placeholder="Type de site, surface approximative, fréquence souhaitée, contraintes d'accès..." required></textarea>
         </div>
 
+        <p id="formError" class="form-note" style="display:none;color:#b3261e;font-weight:600;" role="alert"></p>
         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Envoyer ma demande</button>
-        <p class="form-note">En envoyant ce formulaire, votre messagerie s'ouvre avec un message prérempli à destination d'ECOPUR. Vous pouvez aussi nous appeler directement au 06 66 30 24 43.</p>
+        <p class="form-note">Votre demande est envoyée directement à ECOPUR (contact@ecopurnettoyage.com). Vous pouvez aussi nous appeler au 06 66 30 24 43.</p>
       </form>
 
       <div id="formDone" style="display:none;text-align:center;padding:14px 0;">
-        <p style="font-weight:700;color:var(--green-700);">Merci, votre message est prêt à partir.</p>
-        <p style="color:var(--muted);">Si votre messagerie ne s'est pas ouverte, écrivez-nous à <a href="mailto:contact@ecopurnettoyage.com">contact@ecopurnettoyage.com</a>.</p>
+        <p style="font-weight:700;color:var(--green-700);">Merci, votre demande a bien été envoyée.</p>
+        <p style="color:var(--muted);">Nous revenons vers vous rapidement. Pour une urgence, appelez le <a href="tel:+33666302443">06 66 30 24 43</a>.</p>
       </div>
     </div>
   </div>
@@ -210,33 +216,56 @@
       });
     }
 
-    // Formulaire statique : ouvre la messagerie avec un message prérempli.
-    // À remplacer par un service de formulaire (Formspree, etc.) ou un script
-    // serveur côté Hostinger pour un envoi sans ouverture de la messagerie.
+    // Envoi du formulaire vers envoi.php (mail() Hostinger -> contact@ecopurnettoyage.com).
+    // Sans JavaScript, le formulaire est posté normalement et envoi.php redirige
+    // vers contact.html?envoi=ok ; le bloc ci-dessous gère alors l'affichage.
     var form = document.getElementById('contactForm');
+    var done = document.getElementById('formDone');
+    var errBox = document.getElementById('formError');
+
+    function montrerSucces() {
+      if (form) form.style.display = 'none';
+      if (done) done.style.display = 'block';
+    }
+    function montrerErreur(msg) {
+      if (errBox) {
+        errBox.textContent = msg || 'L\'envoi a échoué. Réessayez ou écrivez à contact@ecopurnettoyage.com.';
+        errBox.style.display = 'block';
+      }
+    }
+
+    // Retour de la redirection sans JS (?envoi=ok / ?envoi=erreur).
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('envoi') === 'ok') { montrerSucces(); }
+    else if (params.get('envoi') === 'erreur') { montrerErreur(); }
+
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!form.checkValidity()) { form.reportValidity(); return; }
-        var get = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-        var corps = [
-          'Nom : ' + get('nom'),
-          'Société / copropriété : ' + get('societe'),
-          'E-mail : ' + get('email'),
-          'Téléphone : ' + get('tel'),
-          'Prestation : ' + get('presta'),
-          'Ville du site : ' + get('ville'),
-          '',
-          'Demande :',
-          get('message')
-        ].join('\n');
-        var sujet = 'Demande de devis' + (get('presta') ? ' (' + get('presta') + ')' : '');
-        var lien = 'mailto:contact@ecopurnettoyage.com'
-          + '?subject=' + encodeURIComponent(sujet)
-          + '&body=' + encodeURIComponent(corps);
-        window.location.href = lien;
-        form.style.display = 'none';
-        document.getElementById('formDone').style.display = 'block';
+        if (errBox) errBox.style.display = 'none';
+
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours...'; }
+
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+          body: new FormData(form)
+        })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+        .then(function (res) {
+          if (res.ok && res.data && res.data.ok) {
+            montrerSucces();
+          } else {
+            montrerErreur(res.data && res.data.message);
+            if (btn) { btn.disabled = false; btn.textContent = 'Envoyer ma demande'; }
+          }
+        })
+        .catch(function () {
+          montrerErreur();
+          if (btn) { btn.disabled = false; btn.textContent = 'Envoyer ma demande'; }
+        });
       });
     }
   })();

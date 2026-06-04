@@ -48,8 +48,27 @@ git push -u origin main
 
 - **Photos** : les visuels sont des emplacements rayés (« photo · … »). Remplacez-les par vos vraies photos d'interventions et les portraits des fondateurs.
 - **Carte** : dans `contact.html`, l'emplacement carte peut recevoir une iframe Google Maps.
-- **Formulaire** : il ouvre la messagerie vers `contact@ecopurnettoyage.com`. Pour un envoi sans ouverture de boîte mail, branchez un service type [Formspree](https://formspree.io) (un commentaire dans `contact.html` l'indique).
+- **Formulaire** : les demandes sont envoyées directement à `contact@ecopurnettoyage.com` par le script `envoi.php` (fonction `mail()` de Hostinger). Aucun service tiers requis. Voir la section ci-dessous.
 - **Coordonnées** : téléphones, adresse et e-mail sont déjà renseignés ; ajustez si besoin.
+
+## Formulaire de contact (envoi.php)
+
+Le formulaire de la page Contact poste vers `envoi.php`, qui envoie un e-mail à
+`contact@ecopurnettoyage.com` via la fonction `mail()` de Hostinger.
+
+- **Hostinger exécute PHP nativement** : rien à installer.
+- L'e-mail part depuis une adresse du domaine (`From: contact@ecopurnettoyage.com`) et
+  le `Reply-To` est celui du visiteur, pour répondre en un clic.
+- Un champ caché anti-spam (honeypot) filtre les robots.
+- Avec JavaScript : envoi en arrière-plan, message de confirmation sans quitter la page.
+- Sans JavaScript : le formulaire est posté puis redirige vers `contact.html?envoi=ok`.
+
+> **Important** : ce formulaire ne fonctionne **qu'une fois en ligne sur Hostinger**
+> (ou tout hébergement PHP). En ouvrant `contact.html` en local (file://), le PHP ne
+> s'exécute pas. Pour tester en local, lancez un serveur PHP : `php -S localhost:8000`.
+>
+> Si les e-mails n'arrivent pas, vérifiez dans le hPanel que la boîte
+> `contact@ecopurnettoyage.com` existe, et regardez le dossier spam.
 
 ## Coordonnées
 
