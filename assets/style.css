@@ -242,8 +242,8 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
 }
 
-/* Images intégrées dans les hexagones, avatars et la carte */
-.hex img, .avatar img {
+/* Images intégrées dans les hexagones et la carte */
+.hex img {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
@@ -330,28 +330,30 @@ section { position: relative; }
 .feature h3 { font-size: 18px; margin-bottom: 4px; }
 .feature p { font-size: 15px; color: var(--muted); margin: 0; }
 
-/* ---------- Founders ---------- */
-.founders { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-.founder {
+/* ---------- Associés ---------- */
+.assoc-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 46px;
+}
+.assoc-point {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 34px;
+  border-radius: var(--radius);
+  padding: 30px 28px;
   box-shadow: var(--shadow-soft);
 }
-.founder .avatar {
-  width: 120px; height: 120px;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  margin-bottom: 22px;
-  background: #d7ddd7;
+.assoc-point .ic {
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  background: var(--lime-soft);
+  border-radius: 12px;
+  margin-bottom: 18px;
 }
-.founder h3 { font-size: 23px; margin-bottom: 2px; }
-.founder .role {
-  font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--green-600); font-weight: 700; margin-bottom: 18px;
-}
-.founder .contact-line { display: flex; align-items: center; gap: 11px; font-size: 15px; color: var(--ink); margin-top: 9px; }
-.founder .contact-line svg { width: 18px; height: 18px; flex: none; color: var(--green-600); }
+.assoc-point .ic svg { width: 25px; height: 25px; }
+.assoc-point h3 { font-size: 19px; margin-bottom: 7px; }
+.assoc-point p { font-size: 15px; color: var(--muted); margin: 0; }
 
 /* ---------- Bandeau CTA ---------- */
 .cta-band { text-align: center; }
@@ -495,7 +497,7 @@ section { position: relative; }
   .hex-stack { display: none; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .two-col { grid-template-columns: 1fr; gap: 36px; }
-  .founders { grid-template-columns: 1fr; }
+  .assoc-points { grid-template-columns: 1fr; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
