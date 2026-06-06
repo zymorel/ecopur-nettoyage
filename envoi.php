@@ -95,5 +95,5 @@ $envoye = @mail(
 if ($envoye) {
     repondre(true, 'Merci, votre demande a bien été envoyée. Nous revenons vers vous rapidement.', $estAjax);
 } else {
-    repondre(false, 'L\'envoi a échoué. Écrivez-nous directement à contact@ecopurnettoyage.com ou appelez le 06 66 30 24 43.', $estAjax);
+    repondre(false, 'L\'envoi a échoué. Écrivez-nous directement à contact@ecopurnettoyage.com ou appelez le 07 49 58 45 28.', $estAjax);
 }
